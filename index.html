@@ -14,8 +14,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{display:g
 </style>
 </head>
 <body>
-<div class="mobilehead"><div class="brandmark">J</div><strong>JHS Connect</strong><select id="mobileRole" class="role-select" aria-label="Preview role"><option>Admin</option><option>Teacher</option><option>Student</option><option>Principal</option></select></div>
-<div class="shell">
+<div class="mobilehead"><div class="brandmark">J</div><strong>JHS Connect</strong><select id="mobileRole" class="role-select" aria-label="Preview role"><option>Student</option><option>Teacher</option></select>
 <aside class="sidebar">
   <div class="brand"><div class="brandmark">J</div><div><h1>JHS Connect</h1><small>School portal & LMS</small></div></div>
   <div><div class="navlabel">Workspace</div><nav class="nav" id="nav">
@@ -71,7 +70,7 @@ let currentPage="dashboard", role="Admin", searchTerm="", assignmentList=[
 ];
 const $=id=>document.getElementById(id);
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function canAdmin(){return role==="Admin"||role==="Principal"}
+function canAdmin(){return false}
 function setPage(p){currentPage=p;document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===p));render()}
 $("nav").addEventListener("click",e=>{const b=e.target.closest("[data-page]");if(b)setPage(b.dataset.page)});
 function setRole(v){role=v;$("role").value=v;$("mobileRole").value=v;$("avatar").textContent=({Admin:"AD",Teacher:"TE",Student:"ST",Principal:"PR"})[v];render()}
